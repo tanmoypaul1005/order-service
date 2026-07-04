@@ -12,4 +12,8 @@ export class AddressService {
             },
         });
     }
+
+    async getAllAddresses() {
+        return this.prisma.address.findMany();
+    }
 }

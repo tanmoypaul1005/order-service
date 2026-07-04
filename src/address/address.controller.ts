@@ -14,4 +14,13 @@ export class AddressController {
         channel.ack(originalMessage);
         return result;
     }
+
+    @MessagePattern('address.getAll')
+    async getAllAddresses(@Ctx() context: RmqContext) {
+        const result = await this.addressService.getAllAddresses();
+        const channel=context.getChannelRef();
+        const originalMessage=context.getMessage();
+        channel.ack(originalMessage);
+        return result;
+    }
 }
