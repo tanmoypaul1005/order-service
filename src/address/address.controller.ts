@@ -23,4 +23,22 @@ export class AddressController {
         channel.ack(originalMessage);
         return result;
     }
+
+    @MessagePattern('address.update')
+    async updateAddress(@Payload() data: { id: string, address: string }, @Ctx() context: RmqContext) {
+        const result = await this.addressService.updateAddress(data.id, data.address);
+        const channel=context.getChannelRef();
+        const originalMessage=context.getMessage();
+        channel.ack(originalMessage);
+        return result;
+    }
+
+    @MessagePattern('address.delete')
+    async deleteAddress(@Payload() data: { id: string }, @Ctx() context: RmqContext) {
+        const result = await this.addressService.deleteAddress(data.id);
+        const channel=context.getChannelRef();
+        const originalMessage=context.getMessage();
+        channel.ack(originalMessage);
+        return result;
+    }
 }
