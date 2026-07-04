@@ -1,6 +1,5 @@
 import { Controller } from '@nestjs/common';
 import { Ctx, MessagePattern, Payload, RmqContext } from '@nestjs/microservices';
-import { CreateAddressDto } from './dto/address.dto';
 import { AddressService } from './address.service';
 
 @Controller()
