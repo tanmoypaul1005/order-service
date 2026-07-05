@@ -3,6 +3,7 @@ import { PrismaService } from '../prisma.service';
 
 @Injectable()
 export class AddressService {
+    
     constructor(private readonly prisma: PrismaService) { }
 
     async createAddress(address: string) {
