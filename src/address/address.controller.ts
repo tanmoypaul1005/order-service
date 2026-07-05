@@ -4,7 +4,7 @@ import { AddressService } from './address.service';
 
 @Controller()
 export class AddressController {
-    
+
     constructor(private readonly addressService: AddressService) { }
 
     @MessagePattern('address.create')
@@ -42,4 +42,5 @@ export class AddressController {
         channel.ack(originalMessage);
         return result;
     }
+    
 }
